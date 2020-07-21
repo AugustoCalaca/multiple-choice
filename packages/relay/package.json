@@ -1,0 +1,12 @@
+{
+  "name": "@multiple-choice/relay",
+  "version": "1.0.0",
+  "main": "src/index",
+  "module": "src/index",
+  "license": "MIT",
+  "scripts": {
+    "build:js": " babel src --extensions \".js,.jsx,.ts,.tsx\" --ignore *.spec.js --out-dir dist --copy-files --source-maps --verbose",
+    "build:types": "tsc",
+    "build": "yarn build:js && yarn build:types"
+  }
+}
