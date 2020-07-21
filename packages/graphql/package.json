@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "main": "dist/index",
   "module": "src/index",
-  "author": "Augusto Calaca",
   "description": "Graphql-Helpers",
   "license": "MIT",
   "dependencies": {
