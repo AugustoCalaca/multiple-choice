@@ -1,0 +1,12 @@
+{
+  "name": "@multiple-choice/babel-next",
+  "version": "1.0.0",
+  "description": "Babel-Next",
+  "main": "index.js",
+  "author": "Augusto Calaca",
+  "license": "MIT",
+  "dependencies": {
+    "babel-plugin-relay": "^9.1.0",
+    "babel-plugin-styled-components": "^1.10.7"
+  }
+}
