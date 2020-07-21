@@ -19,15 +19,17 @@ describe('MultipleChoiceAddMutation', () => {
       mutation M($input: MultipleChoiceAddInput!) {
         MultipleChoiceAdd(input: $input) {
           error
-          multipleChoice {
-            question
-            statementA
-            statementB
-            statementC
-            statementD
-            statementE
-            correctAnswer
-            markedAnswer
+          multipleChoiceEdge {
+            node {
+              question
+              statementA
+              statementB
+              statementC
+              statementD
+              statementE
+              correctAnswer
+              markedAnswer
+            }
           }
         }
       }
@@ -50,7 +52,7 @@ describe('MultipleChoiceAddMutation', () => {
 
     expect(result.errors).toBeUndefined();
     expect(result.data!.MultipleChoiceAdd.error).toBeNull();
-    expect(result.data!.MultipleChoiceAdd.multipleChoice).toMatchObject({
+    expect(result.data!.MultipleChoiceAdd.multipleChoiceEdge.node).toMatchObject({
       question: variables.input.question,
       statementA: variables.input.statementA,
       statementB: variables.input.statementB,
