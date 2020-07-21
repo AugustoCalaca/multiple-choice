@@ -1,0 +1,21 @@
+{
+  "name": "@multiple-choice/graphql",
+  "version": "1.0.0",
+  "main": "dist/index",
+  "module": "src/index",
+  "author": "Augusto Calaca",
+  "description": "Graphql-Helpers",
+  "license": "MIT",
+  "dependencies": {
+    "@entria/graphql-mongo-helpers": "^0.0.1",
+    "@entria/graphql-mongoose-loader": "^4.3.0",
+    "@multiple-choice/babel-server": "*",
+    "graphql": "^15.0.0",
+    "graphql-relay": "^0.6.0"
+  },
+  "scripts": {
+    "build:js": "rm -rf dist/* && babel src --extensions \".es6,.js,.es,.jsx,.mjs,.ts,.tsx\" --ignore *.spec.js --out-dir dist --copy-files --source-maps --verbose",
+    "build:types": "tsc",
+    "build": "yarn build:js && yarn build:types"
+  }
+}
