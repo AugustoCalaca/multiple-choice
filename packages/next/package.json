@@ -1,0 +1,40 @@
+{
+  "name": "@multiple-choice/next",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 6060",
+    "build": "next build",
+    "start": "next start",
+    "relay": "relay-compiler"
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.11.0",
+    "@material-ui/icons": "^4.9.1",
+    "@multiple-choice/relay": "*",
+    "formik": "^2.1.5",
+    "next": "9.4.4",
+    "react": "0.0.0-experimental-7f28234f8",
+    "react-dom": "0.0.0-experimental-7f28234f8",
+    "react-infinite-scroller": "^1.2.4",
+    "react-relay": "0.0.0-experimental-8cc94ddc",
+    "relay-runtime": "^9.1.0",
+    "styled-components": "^5.1.1",
+    "yup": "^0.29.1"
+  },
+  "devDependencies": {
+    "@multiple-choice/babel-next": "*",
+    "@types/react-dom": "^16.9.8",
+    "@types/react-relay": "^7.0.8",
+    "@types/relay-runtime": "^9.1.5",
+    "@types/styled-components": "^5.1.0",
+    "@types/yup": "^0.29.3",
+    "babel-plugin-relay": "^9.1.0",
+    "graphql": "^15.1.0",
+    "next-compose-plugins": "^2.2.0",
+    "next-transpile-modules": "^3.3.0",
+    "relay-compiler": "^9.1.0",
+    "relay-compiler-language-typescript": "^12.0.3",
+    "relay-config": "^9.1.0"
+  }
+}
