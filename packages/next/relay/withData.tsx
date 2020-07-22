@@ -43,9 +43,8 @@ const withData = (ComposedComponent: NextPage, options: OptionsWithData) => {
     if (query) {
       // fetch queries on server and the hooks like `useLazyLoad` can fetch data directly
       // from the store
-      const q = await fetchQuery(environment, query, variables);
-      // eslint-disable-next-line
-      console.log('fetch query: ', q);
+      await fetchQuery(environment, query, variables);
+
       // fetchQuery(environment, query, variables).subscribe({
       //   start: (observer) => console.log('start query.. ', observer),
       //   complete: () => console.log('complete query.. '),
@@ -54,13 +53,13 @@ const withData = (ComposedComponent: NextPage, options: OptionsWithData) => {
     }
 
     const records = environment.getStore().getSource().toJSON();
+    // eslint-disable-next-line
     console.log('records: ', records);
 
     return {
       ...composedInitalProps,
       records,
       environment,
-      ssr: true,
     };
   };
 

@@ -29,7 +29,6 @@ const themes: ReturnType<typeof createMuiTheme> = createMuiTheme(
         default: '#dfdfdf',
       },
     },
-    // overrides,
     props,
   },
   {
