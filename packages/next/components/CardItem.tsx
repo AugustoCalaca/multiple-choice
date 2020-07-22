@@ -19,8 +19,13 @@ import FormDialog from './FormDialog';
 
 import { MultipleChoiceDelete, deleteUpdater } from './MultipleChoiceDelete';
 import { MultipleChoiceDeleteMutation } from './__generated__/MultipleChoiceDeleteMutation.graphql';
+import { MultipleChoiceListItem_multipleChoice$data } from './__generated__/MultipleChoiceListItem_multipleChoice.graphql';
 
-const CardItem = (props) => {
+type Props = {
+  data: MultipleChoiceListItem_multipleChoice$data;
+};
+
+const CardItem = (props: Props) => {
   const [multipleChoiceDelete, isPending] = useMutation<MultipleChoiceDeleteMutation>(MultipleChoiceDelete);
 
   const [loading, setLoading] = useState(false);

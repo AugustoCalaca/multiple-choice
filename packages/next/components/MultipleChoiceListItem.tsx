@@ -25,7 +25,7 @@ const MultipleChoiceListItem = (props: Props) => {
     props.multipleChoice,
   );
 
-  return <CardItem data={multipleChoice} correctAnswer={multipleChoice} />;
+  return <CardItem data={multipleChoice} />;
 };
 
 export default MultipleChoiceListItem;
