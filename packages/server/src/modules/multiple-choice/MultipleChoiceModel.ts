@@ -1,36 +1,25 @@
 import mongoose, { Document } from 'mongoose';
 
+const notEmptyArray = (statements: []) => (Array.isArray(statements) && statements.length > 0 ? true : false);
+
 const MultipleChoiceSchema = new mongoose.Schema(
   {
     question: {
       type: String,
       required: true,
+      minlength: 3,
       trim: true,
     },
-    statementA: {
-      type: String,
+    statements: {
+      type: [
+        {
+          type: String,
+          trim: true,
+          minlength: 3,
+        },
+      ],
       required: true,
-      trim: true,
-    },
-    statementB: {
-      type: String,
-      required: true,
-      trim: true,
-    },
-    statementC: {
-      type: String,
-      required: true,
-      trim: true,
-    },
-    statementD: {
-      type: String,
-      required: true,
-      trim: true,
-    },
-    statementE: {
-      type: String,
-      required: true,
-      trim: true,
+      validate: [notEmptyArray, 'Please add least one statement in the statements array'],
     },
     correctAnswer: {
       type: String,
@@ -52,11 +41,7 @@ const MultipleChoiceSchema = new mongoose.Schema(
 
 export interface IMultipleChoice extends Document {
   question: string;
-  statementA: string;
-  statementB: string;
-  statementC: string;
-  statementD: string;
-  statementE: string;
+  statements: string[];
   correctAnswer: string;
   markedAnswer: string;
   createdAt: Date;

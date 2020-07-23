@@ -22,11 +22,7 @@ describe('MultipleChoiceAddMutation', () => {
           multipleChoiceEdge {
             node {
               question
-              statementA
-              statementB
-              statementC
-              statementD
-              statementE
+              statements
               correctAnswer
               markedAnswer
             }
@@ -38,11 +34,13 @@ describe('MultipleChoiceAddMutation', () => {
     const variables = {
       input: {
         question: 'Is it an awesome question?',
-        statementA: 'Awesome statement A',
-        statementB: 'Awesome statement B',
-        statementC: 'Awesome statement C',
-        statementD: 'Awesome statement D',
-        statementE: 'Awesome statement E',
+        statements: [
+          'Awesome statement A',
+          'Awesome statement B',
+          'Awesome statement C',
+          'Awesome statement D',
+          'Awesome statement E',
+        ],
         correctAnswer: 'a',
       },
     };
@@ -54,13 +52,9 @@ describe('MultipleChoiceAddMutation', () => {
     expect(result.data!.MultipleChoiceAdd.error).toBeNull();
     expect(result.data!.MultipleChoiceAdd.multipleChoiceEdge.node).toMatchObject({
       question: variables.input.question,
-      statementA: variables.input.statementA,
-      statementB: variables.input.statementB,
-      statementC: variables.input.statementC,
-      statementD: variables.input.statementD,
-      statementE: variables.input.statementE,
       correctAnswer: variables.input.correctAnswer,
       markedAnswer: null,
     });
+    expect(result.data!.MultipleChoiceAdd.multipleChoiceEdge.node.statements).toEqual([...variables.input.statements]);
   });
 });
