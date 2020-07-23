@@ -11,7 +11,13 @@ type IProps = TextFieldProps & {
 };
 
 const TextField = ({ formik, value, name, loading, onChange, InputProps, ...props }: IProps) => {
-  value = formik ? formik.values[name] : value;
+  const [fieldName, index] = name.split('.'); // formik field name
+
+  if (index) {
+    value = formik ? formik.values[fieldName][index] : value;
+  } else {
+    value = formik ? formik.values[fieldName] : value;
+  }
 
   const handleChange = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
@@ -26,7 +32,7 @@ const TextField = ({ formik, value, name, loading, onChange, InputProps, ...prop
     [formik, name, onChange],
   );
 
-  const hasError = formik && (formik.touched[name] || formik.submitCount > 0) && !!formik.errors[name];
+  const hasError = formik && (formik.touched[fieldName] || formik.submitCount > 0) && !!formik.errors[fieldName];
 
   return (
     <TextFieldCore
