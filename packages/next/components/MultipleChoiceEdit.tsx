@@ -9,11 +9,7 @@ export const MultipleChoiceEdit = graphql`
       multipleChoice {
         id
         question
-        statementA
-        statementB
-        statementC
-        statementD
-        statementE
+        statements
         correctAnswer
       }
     }

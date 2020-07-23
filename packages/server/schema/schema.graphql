@@ -32,11 +32,7 @@ type MultipleChoice implements Node {
   """Mongo _id"""
   _id: String!
   question: String
-  statementA: String
-  statementB: String
-  statementC: String
-  statementD: String
-  statementE: String
+  statements: [String]
   correctAnswer: String
   markedAnswer: String
   createdAt: String
@@ -109,11 +105,7 @@ type MultipleChoiceAddPayload {
 
 input MultipleChoiceAddInput {
   question: String!
-  statementA: String!
-  statementB: String!
-  statementC: String!
-  statementD: String!
-  statementE: String!
+  statements: [String]!
   correctAnswer: String!
   clientMutationId: String
 }
@@ -127,11 +119,7 @@ type MultipleChoiceEditPayload {
 input MultipleChoiceEditInput {
   id: ID!
   question: String
-  statementA: String
-  statementB: String
-  statementC: String
-  statementD: String
-  statementE: String
+  statements: [String]
   correctAnswer: String
   clientMutationId: String
 }

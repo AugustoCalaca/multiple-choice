@@ -10,11 +10,7 @@ export const MultipleChoiceAdd = graphql`
         node {
           id
           question
-          statementA
-          statementB
-          statementC
-          statementD
-          statementE
+          statements
           correctAnswer
         }
       }

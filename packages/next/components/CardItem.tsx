@@ -86,21 +86,15 @@ const CardItem = (props: Props) => {
           subheader={`${props.data.question}`}
         />
         <CardContent>
-          <Typography variant="body2" color="textSecondary" component="p">
-            A) {props.data.statementA}
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            B) {props.data.statementB}
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            C) {props.data.statementC}
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            D) {props.data.statementD}
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            E) {props.data.statementE}
-          </Typography>
+          {props.data.statements &&
+            props.data.statements.map((statement, index) => {
+              const characterA = 65;
+              return (
+                <Typography key={props.data.id} variant="body2" color="textSecondary" component="p">
+                  {String.fromCharCode(characterA + index)}) {statement}
+                </Typography>
+              );
+            })}
         </CardContent>
         <CardActions disableSpacing>
           <IconButtonStyled onClick={handleExpandClick} aria-expanded={expanded} aria-label="show more">

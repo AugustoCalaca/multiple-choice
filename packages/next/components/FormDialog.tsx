@@ -17,6 +17,8 @@ import { useFormik } from 'formik';
 import { MultipleChoiceType } from '../types/MultipleChoiceType';
 import { Toast, TextField } from '../ui';
 
+import FormFieldArray from './FormFieldArray';
+
 import { MultipleChoiceAdd, updater } from './MultipleChoiceAdd';
 import { MultipleChoiceEdit } from './MultipleChoiceEdit';
 
@@ -32,12 +34,8 @@ interface IProps {
 
 const validationSchema = yup.object().shape({
   question: yup.string().trim().min(3).max(200).required(),
-  statementA: yup.string().trim().min(3).max(200).required(),
-  statementB: yup.string().trim().min(3).max(200).required(),
-  statementC: yup.string().trim().min(3).max(200).required(),
-  statementD: yup.string().trim().min(3).max(200).required(),
-  statementE: yup.string().trim().min(3).max(200).required(),
-  correctAnswer: yup.mixed().oneOf(['a', 'b', 'c', 'd', 'e']).required(),
+  statements: yup.array().of(yup.string().trim().min(3).max(200).required()).required(),
+  correctAnswer: yup.mixed().oneOf(['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']).required(),
 });
 
 const SlideRef = (props: TransitionProps & { children?: React.ReactElement<any, any> }, ref: React.Ref<unknown>) => {
@@ -53,11 +51,8 @@ const FormDialog = (props: IProps) => {
   const formik = useFormik<MultipleChoiceType>({
     initialValues: {
       question: '',
-      statementA: '',
-      statementB: '',
-      statementC: '',
-      statementD: '',
-      statementE: '',
+      statements: ['', '', ''],
+      correctAnswer: '',
     },
     validationSchema,
     onSubmit(multipleChoice) {
@@ -118,27 +113,15 @@ const FormDialog = (props: IProps) => {
       <form onSubmit={formik.handleSubmit}>
         <DialogTitle>{formik.values!._id ? 'Edit' : 'New'} Multiple Choice</DialogTitle>
         <DialogContentStyled>
-          <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
-              <TextField multiline rowsMax={12} label="Question" name="question" formik={formik} />
+          <Grid container direction="column" justify="flex-start" spacing={2}>
+            <Grid item>
+              <TextField multiline fullWidth rowsMax={12} label="Question" name="question" formik={formik} />
             </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField multiline rowsMax={12} label="Statement A" name="statementA" formik={formik} />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField multiline rowsMax={9} label="Statement B" name="statementB" formik={formik} />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField multiline rowsMax={9} label="Statement C" name="statementC" formik={formik} />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField multiline rowsMax={9} label="Statement D" name="statementD" formik={formik} />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField multiline rowsMax={9} label="Statement E" name="statementE" formik={formik} />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField label="Correct Answer" name="correctAnswer" formik={formik} />
+
+            <FormFieldArray formik={formik} />
+
+            <Grid item>
+              <TextField label="Correct Answer" fullWidth name="correctAnswer" formik={formik} />
             </Grid>
           </Grid>
         </DialogContentStyled>

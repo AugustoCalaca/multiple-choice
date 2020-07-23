@@ -14,11 +14,7 @@ const MultipleChoiceListItem = (props: Props) => {
       fragment MultipleChoiceListItem_multipleChoice on MultipleChoice {
         id
         question
-        statementA
-        statementB
-        statementC
-        statementD
-        statementE
+        statements
         correctAnswer
       }
     `,
