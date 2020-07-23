@@ -7,8 +7,8 @@ const COUNT_QUESTION = 50;
 
 export const createMultipleChoice = async () => {
   const question = faker.lorem.sentence(5).replace('.', '?');
-  const correctAnswer = faker.random.arrayElement(['a', 'b', 'c', 'd', 'e']);
-  const markedAnswer = faker.random.arrayElement(['a', 'b', 'c', 'd', 'e']);
+  const correctAnswer = faker.random.arrayElement(['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']);
+  const markedAnswer = faker.random.arrayElement(['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']);
 
   const statements = [];
   for (let i = 0; i < faker.random.number({ min: 5, max: 10 }); i++) {

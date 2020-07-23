@@ -23,11 +23,11 @@ const MultipleChoiceSchema = new mongoose.Schema(
     },
     correctAnswer: {
       type: String,
-      enum: ['a', 'b', 'c', 'd', 'e'],
+      enum: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'],
     },
     markedAnswer: {
       type: String,
-      enum: ['a', 'b', 'c', 'd', 'e'],
+      enum: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'],
     },
   },
   {
