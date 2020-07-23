@@ -24,11 +24,7 @@ it('should load one MultipleChoice by inline fragment', async () => {
         ... on MultipleChoice {
           id
           question
-          statementA
-          statementB
-          statementC
-          statementD
-          statementE
+          statements
           correctAnswer
           __typename
         }
@@ -47,17 +43,13 @@ it('should load one MultipleChoice by inline fragment', async () => {
   expect(result.data!.node).toMatchObject({
     id: variables.id,
     question: multipleChoice.question,
-    statementA: multipleChoice.statementA,
-    statementB: multipleChoice.statementB,
-    statementC: multipleChoice.statementC,
-    statementD: multipleChoice.statementD,
-    statementE: multipleChoice.statementE,
     correctAnswer: multipleChoice.correctAnswer,
     __typename: 'MultipleChoice',
   });
+  expect(result.data!.node.statements).toEqual([...multipleChoice.statements]);
 });
 
-it('should load User by spread fragment', async () => {
+it('should load MultipleChoice by spread fragment', async () => {
   const multipleChoice = await createMultipleChoice();
 
   const query = `
@@ -72,11 +64,7 @@ it('should load User by spread fragment', async () => {
     fragment multipleChoiceFields on MultipleChoice {
       id
       question
-      statementA
-      statementB
-      statementC
-      statementD
-      statementE
+      statements
       correctAnswer
     }
   `;
@@ -92,12 +80,8 @@ it('should load User by spread fragment', async () => {
   expect(result.data!.node).toMatchObject({
     id: variables.id,
     question: multipleChoice.question,
-    statementA: multipleChoice.statementA,
-    statementB: multipleChoice.statementB,
-    statementC: multipleChoice.statementC,
-    statementD: multipleChoice.statementD,
-    statementE: multipleChoice.statementE,
     correctAnswer: multipleChoice.correctAnswer,
     __typename: 'MultipleChoice',
   });
+  expect(result.data!.node.statements).toEqual([...multipleChoice.statements]);
 });

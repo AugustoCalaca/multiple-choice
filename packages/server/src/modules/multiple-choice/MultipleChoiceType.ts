@@ -1,4 +1,4 @@
-import { GraphQLObjectType, GraphQLString, GraphQLNonNull } from 'graphql';
+import { GraphQLObjectType, GraphQLString, GraphQLNonNull, GraphQLList } from 'graphql';
 
 import { mongooseIDResolver, timestamps, connectionDefinitions, registerTypeLoader } from '@multiple-choice/graphql';
 
@@ -19,25 +19,9 @@ const MultipleChoiceType = new GraphQLObjectType<IMultipleChoice>({
       type: GraphQLString,
       resolve: (multipleChoice) => multipleChoice.question,
     },
-    statementA: {
-      type: GraphQLString,
-      resolve: (multipleChoice) => multipleChoice.statementA,
-    },
-    statementB: {
-      type: GraphQLString,
-      resolve: (multipleChoice) => multipleChoice.statementB,
-    },
-    statementC: {
-      type: GraphQLString,
-      resolve: (multipleChoice) => multipleChoice.statementC,
-    },
-    statementD: {
-      type: GraphQLString,
-      resolve: (multipleChoice) => multipleChoice.statementD,
-    },
-    statementE: {
-      type: GraphQLString,
-      resolve: (multipleChoice) => multipleChoice.statementE,
+    statements: {
+      type: GraphQLList(GraphQLString),
+      resolve: (multipleChoice) => multipleChoice.statements,
     },
     correctAnswer: {
       type: GraphQLString,

@@ -1,5 +1,5 @@
 import { mutationWithClientMutationId, toGlobalId } from 'graphql-relay';
-import { GraphQLNonNull, GraphQLString } from 'graphql';
+import { GraphQLNonNull, GraphQLString, GraphQLList } from 'graphql';
 
 import MultiplieChoiceModel from '../MultipleChoiceModel';
 import { MultipleChoiceConnection } from '../MultipleChoiceType';
@@ -7,11 +7,7 @@ import * as MultipleChoiceLoader from '../MultipleChoiceLoader';
 
 type Args = {
   question: string;
-  statementA: string;
-  statementB: string;
-  statementC: string;
-  statementD: string;
-  statementE: string;
+  statements: string[];
   correctAnswer: string;
 };
 
@@ -21,20 +17,8 @@ const MultipleChoiceAddMutation = mutationWithClientMutationId({
     question: {
       type: GraphQLNonNull(GraphQLString),
     },
-    statementA: {
-      type: GraphQLNonNull(GraphQLString),
-    },
-    statementB: {
-      type: GraphQLNonNull(GraphQLString),
-    },
-    statementC: {
-      type: GraphQLNonNull(GraphQLString),
-    },
-    statementD: {
-      type: GraphQLNonNull(GraphQLString),
-    },
-    statementE: {
-      type: GraphQLNonNull(GraphQLString),
+    statements: {
+      type: GraphQLNonNull(GraphQLList(GraphQLString)),
     },
     correctAnswer: {
       type: GraphQLNonNull(GraphQLString),

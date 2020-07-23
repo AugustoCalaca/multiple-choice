@@ -18,11 +18,7 @@ const multipleChoiceFragment = `
   fragment multipleChoiceFragment on MultipleChoice {
     id
     question
-    statementA
-    statementB
-    statementC
-    statementD
-    statementE
+    statements
     correctAnswer
   }
 `;
@@ -53,13 +49,9 @@ describe('MultipleChoiceType queries', () => {
     expect(result.data!.multipleChoice).toMatchObject({
       id: variables.id,
       question: multipleChoice.question,
-      statementA: multipleChoice.statementA,
-      statementB: multipleChoice.statementB,
-      statementC: multipleChoice.statementC,
-      statementD: multipleChoice.statementD,
-      statementE: multipleChoice.statementE,
       correctAnswer: multipleChoice.correctAnswer,
     });
+    expect(result.data!.multipleChoice.statements).toEqual([...multipleChoice.statements]);
   });
 
   it('should query all MultipleChoices', async () => {
@@ -90,48 +82,32 @@ describe('MultipleChoiceType queries', () => {
     expect(result.data!.multipleChoices.totalCount).toBe(5);
     expect(result.data!.multipleChoices.edges[0].node).toMatchObject({
       question: multipleChoice5.question,
-      statementA: multipleChoice5.statementA,
-      statementB: multipleChoice5.statementB,
-      statementC: multipleChoice5.statementC,
-      statementD: multipleChoice5.statementD,
-      statementE: multipleChoice5.statementE,
       correctAnswer: multipleChoice5.correctAnswer,
     });
+    expect(result.data!.multipleChoices.edges[0].node.statements).toEqual([...multipleChoice5.statements]);
+
     expect(result.data!.multipleChoices.edges[1].node).toMatchObject({
       question: multipleChoice4.question,
-      statementA: multipleChoice4.statementA,
-      statementB: multipleChoice4.statementB,
-      statementC: multipleChoice4.statementC,
-      statementD: multipleChoice4.statementD,
-      statementE: multipleChoice4.statementE,
       correctAnswer: multipleChoice4.correctAnswer,
     });
+    expect(result.data!.multipleChoices.edges[1].node.statements).toEqual([...multipleChoice4.statements]);
+
     expect(result.data!.multipleChoices.edges[2].node).toMatchObject({
       question: multipleChoice3.question,
-      statementA: multipleChoice3.statementA,
-      statementB: multipleChoice3.statementB,
-      statementC: multipleChoice3.statementC,
-      statementD: multipleChoice3.statementD,
-      statementE: multipleChoice3.statementE,
       correctAnswer: multipleChoice3.correctAnswer,
     });
+    expect(result.data!.multipleChoices.edges[2].node.statements).toEqual([...multipleChoice3.statements]);
+
     expect(result.data!.multipleChoices.edges[3].node).toMatchObject({
       question: multipleChoice2.question,
-      statementA: multipleChoice2.statementA,
-      statementB: multipleChoice2.statementB,
-      statementC: multipleChoice2.statementC,
-      statementD: multipleChoice2.statementD,
-      statementE: multipleChoice2.statementE,
       correctAnswer: multipleChoice2.correctAnswer,
     });
+    expect(result.data!.multipleChoices.edges[3].node.statements).toEqual([...multipleChoice2.statements]);
+
     expect(result.data!.multipleChoices.edges[4].node).toMatchObject({
       question: multipleChoice1.question,
-      statementA: multipleChoice1.statementA,
-      statementB: multipleChoice1.statementB,
-      statementC: multipleChoice1.statementC,
-      statementD: multipleChoice1.statementD,
-      statementE: multipleChoice1.statementE,
       correctAnswer: multipleChoice1.correctAnswer,
     });
+    expect(result.data!.multipleChoices.edges[4].node.statements).toEqual([...multipleChoice1.statements]);
   });
 });

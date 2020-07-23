@@ -26,26 +26,26 @@ describe('MultipleChoiceEditMutation', () => {
           error
           multipleChoice {
             question
-            statementA
-            statementB
-            statementC
-            statementD
-            statementE
+            statements
             correctAnswer
           }
         }
       }
     `;
 
+    const statements = [
+      'Awesome edited statement A',
+      'Awesome edited statement B',
+      'Awesome edited statement C',
+      'Awesome edited statement D',
+      'Awesome edited statement E',
+    ];
+
     const variables = {
       input: {
         id: toGlobalId('MultipleChoice', multipleChoice._id),
         question: 'Is it an awesome edited question?',
-        statementA: 'Awesome edited statement A',
-        statementB: 'Awesome edited statement B',
-        statementC: 'Awesome edited statement C',
-        statementD: 'Awesome edited statement D',
-        statementE: 'Awesome edited statement E',
+        statements,
         correctAnswer: 'b',
       },
     };
@@ -57,13 +57,9 @@ describe('MultipleChoiceEditMutation', () => {
     expect(result.data!.MultipleChoiceEdit.error).toBeNull();
     expect(result.data!.MultipleChoiceEdit.multipleChoice).toMatchObject({
       question: variables.input.question,
-      statementA: variables.input.statementA,
-      statementB: variables.input.statementB,
-      statementC: variables.input.statementC,
-      statementD: variables.input.statementD,
-      statementE: variables.input.statementE,
       correctAnswer: variables.input.correctAnswer,
     });
+    expect(result.data!.MultipleChoiceEdit.multipleChoice.statements).toEqual(statements);
   });
 
   it('should edit one multiple choice field at a time', async () => {
@@ -75,11 +71,7 @@ describe('MultipleChoiceEditMutation', () => {
           error
           multipleChoice {
             question
-            statementA
-            statementB
-            statementC
-            statementD
-            statementE
+            statements
             correctAnswer
           }
         }
@@ -101,18 +93,14 @@ describe('MultipleChoiceEditMutation', () => {
     expect(result1.data!.MultipleChoiceEdit.error).toBeNull();
     expect(result1.data!.MultipleChoiceEdit.multipleChoice).toMatchObject({
       question: variables1.input.question,
-      statementA: multipleChoice.statementA,
-      statementB: multipleChoice.statementB,
-      statementC: multipleChoice.statementC,
-      statementD: multipleChoice.statementD,
-      statementE: multipleChoice.statementE,
       correctAnswer: multipleChoice.correctAnswer,
     });
+    expect(result1.data!.MultipleChoiceEdit.multipleChoice.statements).toEqual([...multipleChoice.statements]);
 
     const variables2 = {
       input: {
         id: toGlobalId('MultipleChoice', multipleChoice._id),
-        statementA: 'Awesome edited statement A',
+        statements: ['Awesome edited statement A'],
       },
     };
 
@@ -121,18 +109,14 @@ describe('MultipleChoiceEditMutation', () => {
     expect(result2.data!.MultipleChoiceEdit.error).toBeNull();
     expect(result2.data!.MultipleChoiceEdit.multipleChoice).toMatchObject({
       question: variables1.input.question,
-      statementA: variables2.input.statementA,
-      statementB: multipleChoice.statementB,
-      statementC: multipleChoice.statementC,
-      statementD: multipleChoice.statementD,
-      statementE: multipleChoice.statementE,
       correctAnswer: multipleChoice.correctAnswer,
     });
+    expect(result2.data!.MultipleChoiceEdit.multipleChoice.statements).toEqual(variables2.input.statements);
 
     const variables3 = {
       input: {
         id: toGlobalId('MultipleChoice', multipleChoice._id),
-        statementB: 'Awesome edited statement B',
+        statements: ['Awesome edited statement A', 'Awesome edited statement B'],
       },
     };
 
@@ -141,18 +125,14 @@ describe('MultipleChoiceEditMutation', () => {
     expect(result3.data!.MultipleChoiceEdit.error).toBeNull();
     expect(result3.data!.MultipleChoiceEdit.multipleChoice).toMatchObject({
       question: variables1.input.question,
-      statementA: variables2.input.statementA,
-      statementB: variables3.input.statementB,
-      statementC: multipleChoice.statementC,
-      statementD: multipleChoice.statementD,
-      statementE: multipleChoice.statementE,
       correctAnswer: multipleChoice.correctAnswer,
     });
+    expect(result3.data!.MultipleChoiceEdit.multipleChoice.statements).toEqual(variables3.input.statements);
 
     const variables4 = {
       input: {
         id: toGlobalId('MultipleChoice', multipleChoice._id),
-        statementC: 'Awesome edited statement C',
+        statements: ['Awesome edited statement A', 'Awesome edited statement B', 'Awesome edited statement C'],
       },
     };
 
@@ -161,18 +141,19 @@ describe('MultipleChoiceEditMutation', () => {
     expect(result4.data!.MultipleChoiceEdit.error).toBeNull();
     expect(result4.data!.MultipleChoiceEdit.multipleChoice).toMatchObject({
       question: variables1.input.question,
-      statementA: variables2.input.statementA,
-      statementB: variables3.input.statementB,
-      statementC: variables4.input.statementC,
-      statementD: multipleChoice.statementD,
-      statementE: multipleChoice.statementE,
       correctAnswer: multipleChoice.correctAnswer,
     });
+    expect(result4.data!.MultipleChoiceEdit.multipleChoice.statements).toEqual(variables4.input.statements);
 
     const variables5 = {
       input: {
         id: toGlobalId('MultipleChoice', multipleChoice._id),
-        statementD: 'Awesome edited statement D',
+        statements: [
+          'Awesome edited statement A',
+          'Awesome edited statement B',
+          'Awesome edited statement C',
+          'Awesome edited statement D',
+        ],
       },
     };
 
@@ -181,18 +162,20 @@ describe('MultipleChoiceEditMutation', () => {
     expect(result5.data!.MultipleChoiceEdit.error).toBeNull();
     expect(result5.data!.MultipleChoiceEdit.multipleChoice).toMatchObject({
       question: variables1.input.question,
-      statementA: variables2.input.statementA,
-      statementB: variables3.input.statementB,
-      statementC: variables4.input.statementC,
-      statementD: variables5.input.statementD,
-      statementE: multipleChoice.statementE,
       correctAnswer: multipleChoice.correctAnswer,
     });
+    expect(result5.data!.MultipleChoiceEdit.multipleChoice.statements).toEqual(variables5.input.statements);
 
     const variables6 = {
       input: {
         id: toGlobalId('MultipleChoice', multipleChoice._id),
-        statementE: 'Awesome edited statement E',
+        statements: [
+          'Awesome edited statement A',
+          'Awesome edited statement B',
+          'Awesome edited statement C',
+          'Awesome edited statement D',
+          'Awesome edited statement E',
+        ],
       },
     };
 
@@ -201,13 +184,9 @@ describe('MultipleChoiceEditMutation', () => {
     expect(result6.data!.MultipleChoiceEdit.error).toBeNull();
     expect(result6.data!.MultipleChoiceEdit.multipleChoice).toMatchObject({
       question: variables1.input.question,
-      statementA: variables2.input.statementA,
-      statementB: variables3.input.statementB,
-      statementC: variables4.input.statementC,
-      statementD: variables5.input.statementD,
-      statementE: variables6.input.statementE,
       correctAnswer: multipleChoice.correctAnswer,
     });
+    expect(result6.data!.MultipleChoiceEdit.multipleChoice.statements).toEqual(variables6.input.statements);
   });
 
   it('should not edit an multiple choice for passing an wrong id field', async () => {
@@ -217,11 +196,7 @@ describe('MultipleChoiceEditMutation', () => {
           error
           multipleChoice {
             question
-            statementA
-            statementB
-            statementC
-            statementD
-            statementE
+            statements
             correctAnswer
           }
         }
@@ -252,11 +227,7 @@ describe('MultipleChoiceEditMutation', () => {
           error
           multipleChoice {
             question
-            statementA
-            statementB
-            statementC
-            statementD
-            statementE
+            statements
             correctAnswer
           }
         }

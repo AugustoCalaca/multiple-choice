@@ -7,21 +7,17 @@ const COUNT_QUESTION = 50;
 
 export const createMultipleChoice = async () => {
   const question = faker.lorem.sentence(5).replace('.', '?');
-  const statementA = faker.lorem.sentence(10);
-  const statementB = faker.lorem.sentence(10);
-  const statementC = faker.lorem.sentence(10);
-  const statementD = faker.lorem.sentence(10);
-  const statementE = faker.lorem.sentence(10);
   const correctAnswer = faker.random.arrayElement(['a', 'b', 'c', 'd', 'e']);
   const markedAnswer = faker.random.arrayElement(['a', 'b', 'c', 'd', 'e']);
 
+  const statements = [];
+  for (let i = 0; i < faker.random.number({ min: 5, max: 10 }); i++) {
+    statements.push(faker.lorem.sentence(10));
+  }
+
   const multipleChoice = await new MultipleChoiceModel({
     question,
-    statementA,
-    statementB,
-    statementC,
-    statementD,
-    statementE,
+    statements,
     correctAnswer,
     markedAnswer,
   }).save();

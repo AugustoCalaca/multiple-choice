@@ -1,5 +1,5 @@
 import { mutationWithClientMutationId, fromGlobalId } from 'graphql-relay';
-import { GraphQLString, GraphQLID, GraphQLNonNull } from 'graphql';
+import { GraphQLString, GraphQLID, GraphQLNonNull, GraphQLList } from 'graphql';
 
 import MultiplieChoiceModel from '../MultipleChoiceModel';
 import MultipleChoiceType from '../MultipleChoiceType';
@@ -8,11 +8,7 @@ import * as MultipleChoiceLoader from '../MultipleChoiceLoader';
 type Args = {
   id: string;
   question: string;
-  statementA: string;
-  statementB: string;
-  statementC: string;
-  statementD: string;
-  statementE: string;
+  statements: string[];
   correctAnswer: string;
 };
 
@@ -25,20 +21,8 @@ const MultipleChoiceEditMutation = mutationWithClientMutationId({
     question: {
       type: GraphQLString,
     },
-    statementA: {
-      type: GraphQLString,
-    },
-    statementB: {
-      type: GraphQLString,
-    },
-    statementC: {
-      type: GraphQLString,
-    },
-    statementD: {
-      type: GraphQLString,
-    },
-    statementE: {
-      type: GraphQLString,
+    statements: {
+      type: GraphQLList(GraphQLString),
     },
     correctAnswer: {
       type: GraphQLString,
@@ -69,11 +53,7 @@ const MultipleChoiceEditMutation = mutationWithClientMutationId({
         {
           $set: {
             question: args.question || multipleChoice.question,
-            statementA: args.statementA || multipleChoice.statementA,
-            statementB: args.statementB || multipleChoice.statementB,
-            statementC: args.statementC || multipleChoice.statementC,
-            statementD: args.statementD || multipleChoice.statementD,
-            statementE: args.statementE || multipleChoice.statementE,
+            statements: args.statements || multipleChoice.statements,
             correctAnswer: args.correctAnswer || multipleChoice.correctAnswer,
           },
         },
