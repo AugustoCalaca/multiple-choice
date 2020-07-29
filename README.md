@@ -39,11 +39,7 @@ query MultipleChoice($id: ID!) {
 fragment multipleChoiceFragment on MultipleChoice {
   id
   question
-  statementA
-  statementB
-  statementC
-  statementD
-  statementE
+  statements
   correctAnswer
 }
 ```
@@ -57,11 +53,7 @@ mutation MultipleChoiceAdd($input: MultipleChoiceAddInput!) {
       node {
         id
         question
-        statementA
-        statementB
-        statementC
-        statementD
-        statementE
+        statements
         correctAnswer
       }
     }
