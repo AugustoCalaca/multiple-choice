@@ -41,7 +41,7 @@ describe('MultipleChoiceAddMutation', () => {
           'Awesome statement D',
           'Awesome statement E',
         ],
-        correctAnswer: 'a',
+        correctAnswer: 'A',
       },
     };
     const rootValue = {};

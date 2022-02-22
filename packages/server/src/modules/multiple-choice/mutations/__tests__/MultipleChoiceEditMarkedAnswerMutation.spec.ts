@@ -32,7 +32,7 @@ describe('MultipleChoiceEditMarkedAnswerMutation', () => {
     const variables = {
       input: {
         id: toGlobalId('MultipleChoice', multipleChoice._id),
-        markedAnswer: 'b',
+        markedAnswer: 'B',
       },
     };
     const rootValue = {};
@@ -64,7 +64,7 @@ describe('MultipleChoiceEditMarkedAnswerMutation', () => {
     const variables1 = {
       input: {
         id: toGlobalId('MultipleChoice', multipleChoice._id),
-        markedAnswer: 'a',
+        markedAnswer: 'A',
       },
     };
 
@@ -78,7 +78,7 @@ describe('MultipleChoiceEditMarkedAnswerMutation', () => {
     const variables2 = {
       input: {
         id: toGlobalId('MultipleChoice', multipleChoice._id),
-        markedAnswer: 'b',
+        markedAnswer: 'B',
       },
     };
 
@@ -92,7 +92,7 @@ describe('MultipleChoiceEditMarkedAnswerMutation', () => {
     const variables3 = {
       input: {
         id: toGlobalId('MultipleChoice', multipleChoice._id),
-        markedAnswer: 'c',
+        markedAnswer: 'C',
       },
     };
 
@@ -106,7 +106,7 @@ describe('MultipleChoiceEditMarkedAnswerMutation', () => {
     const variables4 = {
       input: {
         id: toGlobalId('MultipleChoice', multipleChoice._id),
-        markedAnswer: 'd',
+        markedAnswer: 'D',
       },
     };
 
@@ -120,7 +120,7 @@ describe('MultipleChoiceEditMarkedAnswerMutation', () => {
     const variables5 = {
       input: {
         id: toGlobalId('MultipleChoice', multipleChoice._id),
-        markedAnswer: 'e',
+        markedAnswer: 'E',
       },
     };
 
@@ -169,7 +169,7 @@ describe('MultipleChoiceEditMarkedAnswerMutation', () => {
     const variables = {
       input: {
         id: toGlobalId('MultipleChoice', Types.ObjectId().toString()),
-        markedAnswer: 'a',
+        markedAnswer: 'A',
       },
     };
     const rootValue = {};
@@ -195,7 +195,7 @@ describe('MultipleChoiceEditMarkedAnswerMutation', () => {
 
     const variables = {
       input: {
-        question: 'Is it an awesome edited question?',
+        markedAnswer: 'I',
       },
     };
     const rootValue = {};

@@ -14,7 +14,7 @@ export const createMultipleChoice = async (payload: Partial<IMultipleChoice> = {
       `Statement D. ${n}`,
       `Statement E. ${n}`,
     ],
-    correctAnswer: correctAnswer || 'a',
+    correctAnswer: correctAnswer || 'A',
     ...rest,
   }).save();
 };

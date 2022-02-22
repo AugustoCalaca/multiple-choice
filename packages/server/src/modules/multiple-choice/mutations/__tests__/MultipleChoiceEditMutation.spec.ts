@@ -46,7 +46,7 @@ describe('MultipleChoiceEditMutation', () => {
         id: toGlobalId('MultipleChoice', multipleChoice._id),
         question: 'Is it an awesome edited question?',
         statements,
-        correctAnswer: 'b',
+        correctAnswer: 'B',
       },
     };
     const rootValue = {};
