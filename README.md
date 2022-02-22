@@ -8,6 +8,9 @@ A great starting point for testing and playing with new features of the technolo
 ```
 yarn
 ```
+```
+yarn startup
+```
 
 ## Server
 ```
