@@ -9,7 +9,7 @@ export interface NullConnectionType {
   };
   startCursorOffset: number;
   endCursorOffset: number;
-};
+}
 
 export const NullConnection: NullConnectionType = {
   edges: [],

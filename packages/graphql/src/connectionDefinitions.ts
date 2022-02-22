@@ -112,7 +112,7 @@ export function connectionDefinitions(config: ConnectionConfig): GraphQLConnecti
       },
       totalCount: {
         type: GraphQLNonNull(GraphQLInt),
-        resolve: connection => connection.count,
+        resolve: (connection) => connection.count,
         description: `A count of the total number of objects in this connection, ignoring pagination.
   This allows a client to fetch the first five objects by passing "5" as the
   argument to "first", then fetch the total count so it could display "5 of 83",

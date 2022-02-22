@@ -1,4 +1,5 @@
 # Multiple Choice
+
 Repository of the example using GraphQL, Relay, React, NodeJS, NextJS, Styled Components, Material UI and so on.
 
 A great starting point for testing and playing with new features of the technologies mentioned above.
@@ -8,11 +9,13 @@ A great starting point for testing and playing with new features of the technolo
 ```
 yarn
 ```
+
 ```
 yarn startup
 ```
 
 ## Server
+
 ```
 yarn server:graphql
 ```
@@ -20,6 +23,7 @@ yarn server:graphql
 In your browser access localhost:5050/playground
 
 ### Queries Examples
+
 ```
 query MultipleChoices {
 	multipleChoices{
@@ -48,6 +52,7 @@ fragment multipleChoiceFragment on MultipleChoice {
 ```
 
 ### Mutation Example
+
 ```
 mutation MultipleChoiceAdd($input: MultipleChoiceAddInput!) {
   MultipleChoiceAdd(input: $input) {
@@ -65,23 +70,27 @@ mutation MultipleChoiceAdd($input: MultipleChoiceAddInput!) {
 ```
 
 #### Seed data into database
+
 ```
 yarn seed
 ```
 
 #### Tests
+
 ```
 yarn test
 ```
+
 or
+
 ```
 yarn server:test
 ```
 
 ## Web
+
 ```
 yarn next:dev
 ```
 
 In your browser access localhost:6060
-
