@@ -81,7 +81,7 @@ jobs:
       - name: Build GraphQL
         run: yarn workspace @multiple-choice/graphql build:js
       - name: Test
-        run: yarn test --ci
+        run: yarn test --ci --force-exit
 
   gatekeeper-server:
     runs-on: ubuntu-latest
