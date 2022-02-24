@@ -49,6 +49,8 @@ jobs:
             ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
+      - name: Relay
+        run: yarn relay
       - name: Lint
         run: yarn lint:ci
 
