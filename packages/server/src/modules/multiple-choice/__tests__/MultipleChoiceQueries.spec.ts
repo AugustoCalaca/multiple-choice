@@ -4,7 +4,7 @@ import { toGlobalId } from 'graphql-relay';
 import { schema } from '../../../schema/schema';
 import {
   connectMongoose,
-  clearDatabase,
+  disconnectMongoose,
   clearDbAndRestartCounters,
   createMultipleChoice,
   getContext,
@@ -12,7 +12,7 @@ import {
 
 beforeAll(connectMongoose);
 beforeEach(clearDbAndRestartCounters);
-afterAll(clearDatabase);
+afterAll(disconnectMongoose);
 
 const multipleChoiceFragment = `
   fragment multipleChoiceFragment on MultipleChoice {
