@@ -5,8 +5,6 @@ const webpack = require('webpack');
 const WebpackNodeExternals = require('webpack-node-externals');
 const ReloadServerPlugin = require('reload-server-webpack-plugin');
 
-const cwd = process.cwd();
-
 module.exports = {
   mode: 'development',
   devtool: 'cheap-eval-source-map',
@@ -41,10 +39,9 @@ module.exports = {
       {
         test: /\.(js|jsx|ts|tsx)?$/,
         use: {
-          loader: 'babel-loader',
+          loader: 'swc-loader',
         },
         exclude: [/node_modules/],
-        include: [path.join(cwd, 'src'), path.join(cwd, '../')],
       },
     ],
   },
