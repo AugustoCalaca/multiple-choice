@@ -9,6 +9,7 @@
     "build": "rm -rf dist/* && babel src --extensions \".js,.jsx,.ts,.tsx\" --ignore *.spec.js --out-dir dist --copy-files --source-maps --verbose",
     "graphql": "webpack --progress --config webpack.config.graphql.js",
     "seed": "babel-node --extensions \".js,.jsx,.ts,.tsx\" scripts/seed",
+    "swc": "swc ./src -d dist",
     "test": "jest",
     "test:watch": "jest --watch",
     "update-schema": "babel-node --extensions \".js,.jsx,.ts,.tsx\" scripts/updateSchema.js"
@@ -17,10 +18,10 @@
     "@entria/graphql-mongo-helpers": "^0.0.1",
     "@entria/graphql-mongoose-loader": "4.3.0",
     "@koa/router": "^8.0.2",
-    "@typescript-eslint/eslint-plugin": "^2.5.0",
-    "@typescript-eslint/parser": "^2.5.0",
     "@multiple-choice/babel-server": "*",
     "@multiple-choice/graphql": "*",
+    "@typescript-eslint/eslint-plugin": "^2.5.0",
+    "@typescript-eslint/parser": "^2.5.0",
     "bcryptjs": "^2.4.3",
     "core-js": "^3.3.3",
     "dataloader": "^2.0.0",
@@ -51,6 +52,9 @@
   },
   "devDependencies": {
     "@babel/core": "^7.6.2",
+    "@swc/cli": "^0.1.55",
+    "@swc/core": "^1.2.145",
+    "@swc/jest": "^0.2.18",
     "@types/bcryptjs": "^2.4.2",
     "@types/date-fns": "^2.6.0",
     "@types/dotenv-safe": "8.1.0",
@@ -72,6 +76,7 @@
     "mongodb-memory-server": "^6.5.2",
     "reload-server-webpack-plugin": "^1.0.1",
     "supertest": "^4.0.2",
+    "swc-loader": "^0.1.15",
     "webpack": "^4.40.2",
     "webpack-cli": "^3.3.8"
   }
