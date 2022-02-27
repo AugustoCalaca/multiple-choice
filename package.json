@@ -29,6 +29,7 @@
     "seed": "yarn workspace @multiple-choice/server seed",
     "server:build": "yarn workspace @multiple-choice/server build",
     "server:graphql": "yarn workspace @multiple-choice/server graphql",
+    "server:dev": "yarn workspace @multiple-choice/server dev",
     "server:test": "yarn workspace @multiple-choice/server test",
     "startup": "./scripts/startup.sh",
     "test": "jest",

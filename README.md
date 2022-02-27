@@ -17,7 +17,7 @@ yarn startup
 ## Server
 
 ```
-yarn server:graphql
+yarn server:dev
 ```
 
 In your browser access localhost:5050/playground
