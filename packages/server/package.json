@@ -6,7 +6,7 @@
   "author": "Augusto Calaca",
   "main": "src/index.ts",
   "scripts": {
-    "babel": "rm -rf dist/* && babel src -d dist --extensions \".js,.jsx,.ts,.tsx\" --ignore **/*.spec.ts --verbose",
+    "babel": "rm -rf dist/* && babel src -d dist --extensions \".js,.ts\" --ignore \"**/__tests__\" --verbose",
     "build": "vite build",
     "dev": "vite",
     "graphql": "webpack --progress --config webpack.config.graphql.js",
