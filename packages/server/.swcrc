@@ -1,5 +1,4 @@
 {
-  "exclude": "./**/__tests__",
   "jsc": {
     "target": "es2020",
     "parser": {
