@@ -24,12 +24,10 @@ const runServer = async () => {
 
   const server = createServer(app.callback());
 
-  if (import.meta?.env?.PROD) {
-    server.listen(GRAPHQL_PORT, () => {
-      // eslint-disable-next-line no-console
-      console.info(`[\\o/] - Server started on port: ${GRAPHQL_PORT}`);
-    });
-  }
+  server.listen(GRAPHQL_PORT, () => {
+    // eslint-disable-next-line no-console
+    console.info(`[\\o/] - Server started on port: ${GRAPHQL_PORT}`);
+  });
 
   SubscriptionServer.create(
     {

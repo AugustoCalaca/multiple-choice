@@ -7,9 +7,8 @@
   "main": "src/index.ts",
   "scripts": {
     "babel": "rm -rf dist/* && babel src -d dist --extensions \".js,.ts\" --ignore \"**/__tests__\" --verbose",
-    "build": "vite build",
-    "dev": "vite",
-    "graphql": "webpack --progress --config webpack.config.graphql.js",
+    "build": "yarn swc",
+    "dev": "webpack --progress --config webpack.config.graphql.js",
     "seed": "babel-node --extensions \".js,.jsx,.ts,.tsx\" scripts/seed",
     "swc": "swc ./src -d dist",
     "test": "jest",
@@ -79,8 +78,6 @@
     "reload-server-webpack-plugin": "^1.0.1",
     "supertest": "^4.0.2",
     "swc-loader": "^0.1.15",
-    "vite": "^2.8.4",
-    "vite-plugin-node": "^0.0.17",
     "webpack": "^4.40.2",
     "webpack-cli": "^3.3.8"
   }

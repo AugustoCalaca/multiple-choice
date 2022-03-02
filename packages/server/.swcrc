@@ -1,4 +1,7 @@
 {
+  "module": {
+    "type": "commonjs"
+  },
   "jsc": {
     "target": "es2020",
     "parser": {
