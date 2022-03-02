@@ -14,7 +14,7 @@
     "swc": "swc ./src -d dist",
     "test": "jest",
     "test:watch": "jest --watch",
-    "update-schema": "babel-node --extensions \".js,.jsx,.ts,.tsx\" scripts/updateSchema.js"
+    "update-schema": "babel-node --extensions \".js,.ts\" scripts/updateSchema.js"
   },
   "dependencies": {
     "@entria/graphql-mongo-helpers": "^0.0.1",
