@@ -13,7 +13,7 @@
     "@material-ui/icons": "^4.9.1",
     "@multiple-choice/relay": "*",
     "formik": "^2.1.5",
-    "next": "9.4.4",
+    "next": "12.1.0",
     "react": "16.13.1",
     "react-dom": "0.0.0-experimental-7f28234f8",
     "react-infinite-scroller": "^1.2.4",
