@@ -21,8 +21,8 @@ const MultipleChoiceListPagination = (props: Props) => {
   >(
     graphql`
       fragment MultipleChoiceListPagination_query on Query
-        @argumentDefinitions(first: { type: Int, defaultValue: 10 }, after: { type: String })
-        @refetchable(queryName: "MultipleChoiceListPaginationQuery") {
+      @argumentDefinitions(first: { type: Int, defaultValue: 10 }, after: { type: String })
+      @refetchable(queryName: "MultipleChoiceListPaginationQuery") {
         multipleChoices(first: $first, after: $after) @connection(key: "MultipleChoiceListPagination_multipleChoices") {
           edges {
             node {

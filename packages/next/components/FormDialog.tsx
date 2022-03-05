@@ -102,18 +102,19 @@ const FormDialog = (props: IProps) => {
   return (
     <Dialog
       open={props.opened}
-      disableBackdropClick
       disableEscapeKeyDown
-      onEnter={handleEnter}
-      onExited={handleExit}
       TransitionComponent={Transition}
+      TransitionProps={{
+        onEnter: handleEnter,
+        onExited: handleExit,
+      }}
     >
       {(formik.isSubmitting || isPendingAdd || isPendingEdit) && <LinearProgress color="primary" />}
 
       <form onSubmit={formik.handleSubmit}>
         <DialogTitle>{formik.values!._id ? 'Edit' : 'New'} Multiple Choice</DialogTitle>
         <DialogContentStyled>
-          <Grid container direction="column" justify="flex-start" spacing={2}>
+          <Grid container direction="column" justifyContent="flex-start" spacing={2}>
             <Grid item>
               <TextField multiline fullWidth rowsMax={12} label="Question" name="question" formik={formik} />
             </Grid>

@@ -20,10 +20,6 @@ export const MULTIPLE_CHOICE_LIST_QUERY = graphql`
 export const MULTIPLE_CHOICE_LIST_VARIABLES = {};
 
 const MultipleChoiceListLoad = () => {
-  const data = useLazyLoadQuery<MultipleChoiceListQuery>(MULTIPLE_CHOICE_LIST_QUERY, MULTIPLE_CHOICE_LIST_VARIABLES, {
-    fetchPolicy: 'store-or-network',
-  });
-
   const [formOpen, setFormOpen] = useState(false);
   const handleAdd = useCallback(() => {
     setFormOpen(true);
@@ -32,18 +28,24 @@ const MultipleChoiceListLoad = () => {
     setFormOpen(false);
   }, []);
 
+  const data = useLazyLoadQuery<MultipleChoiceListQuery>(MULTIPLE_CHOICE_LIST_QUERY, MULTIPLE_CHOICE_LIST_VARIABLES, {
+    fetchPolicy: 'store-or-network',
+  });
+
   return (
     <CardStyled>
       <FormDialog opened={formOpen} onComplete={formCallback} onCancel={formCallback} />
 
       <CardContent>
-        <Grid container alignItems="center" justify="flex-end">
+        <Grid container alignItems="center" justifyContent="flex-end">
           <Button variant="contained" color="primary" onClick={handleAdd}>
             Add
           </Button>
         </Grid>
       </CardContent>
-      <MultipleChoiceListPagination query={data} />
+      <Suspense fallback={<div>Loading List...</div>}>
+        <MultipleChoiceListPagination query={data} />
+      </Suspense>
     </CardStyled>
   );
 };

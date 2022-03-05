@@ -1,4 +1,4 @@
-import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
+import { createTheme } from '@material-ui/core/styles';
 import { ComponentsProps } from '@material-ui/core/styles/props';
 
 import variables from './ThemeVariables';
@@ -10,7 +10,7 @@ const props: ComponentsProps = {
   },
 };
 
-const themes: ReturnType<typeof createMuiTheme> = createMuiTheme(
+const themes: ReturnType<typeof createTheme> = createTheme(
   {
     palette: {
       primary: {
