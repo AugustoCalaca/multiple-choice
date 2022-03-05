@@ -15,7 +15,7 @@ class ErrorBoundary extends React.Component {
   }
 
   render() {
-    if (this.state.error != null) {
+    if (this.state.error !== null) {
       return (
         <div>
           <div>Error: {this.state.error.message}</div>

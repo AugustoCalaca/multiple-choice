@@ -3,38 +3,39 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 6060",
     "build": "next build",
-    "start": "next start",
-    "relay": "relay-compiler"
+    "dev": "next dev -p 6060",
+    "relay": "relay-compiler",
+    "start": "next start"
   },
   "dependencies": {
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
     "@multiple-choice/relay": "*",
     "formik": "^2.1.5",
-    "next": "9.4.4",
-    "react": "16.13.1",
-    "react-dom": "0.0.0-experimental-7f28234f8",
+    "next": "^12.1.0",
+    "react": "^18.0.0-rc.0",
+    "react-dom": "^18.0.0-rc.0",
     "react-infinite-scroller": "^1.2.4",
-    "react-relay": "0.0.0-experimental-8cc94ddc",
-    "relay-runtime": "^9.1.0",
+    "react-relay": "^13.1.1",
+    "relay-runtime": "^13.1.1",
     "styled-components": "^5.1.1",
     "yup": "^0.29.1"
   },
   "devDependencies": {
     "@multiple-choice/babel-next": "*",
-    "@types/react-dom": "^16.9.8",
-    "@types/react-relay": "^7.0.8",
-    "@types/relay-runtime": "^9.1.5",
+    "@types/react": "^17.0.39",
+    "@types/react-dom": "^17.0.13",
+    "@types/react-relay": "^13.0.1",
+    "@types/relay-runtime": "^13.0.2",
     "@types/styled-components": "^5.1.0",
     "@types/yup": "^0.29.3",
-    "babel-plugin-relay": "^9.1.0",
+    "babel-plugin-relay": "^13.1.1",
     "graphql": "^15.1.0",
     "next-compose-plugins": "^2.2.0",
-    "next-transpile-modules": "^3.3.0",
-    "relay-compiler": "^9.1.0",
-    "relay-compiler-language-typescript": "^12.0.3",
-    "relay-config": "^9.1.0"
+    "next-transpile-modules": "^9.0.0",
+    "relay-compiler": "^13.1.1",
+    "relay-compiler-language-typescript": "^15.0.1",
+    "relay-config": "^12.0.1"
   }
 }

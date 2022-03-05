@@ -52,7 +52,7 @@ const withData = (ComposedComponent: NextPage, options: OptionsWithData) => {
       // });
     }
 
-    const records = environment.getStore().getSource().toJSON();
+    const records = environment?.getStore().getSource().toJSON();
     // eslint-disable-next-line
     console.log('records: ', records);
 

@@ -20,26 +20,26 @@
     "delete:metro-cache": "find . -name \"metro-cache\" -exec rm -rf '{}' +",
     "delete:node_modules": "find . -name \"node_modules\" -exec rm -rf '{}' +",
     "delete:yarn.lock": "find . -name \"yarn.lock\" -exec rm -rf '{}' +",
+    "postinstall": "yarn workspace @multiple-choice/graphql build && yarn update",
     "lint": "eslint --fix --ext .js,.ts,.tsx",
     "lint:ci": "eslint --quiet --ext .js,.ts,.tsx .",
     "lint:fix": "eslint --fix --ext .js,.ts,.tsx .",
-    "postinstall": "yarn workspace @multiple-choice/graphql build && yarn update",
+    "next:build": "yarn workspace @multiple-choice/next build",
+    "next:dev": "yarn workspace @multiple-choice/next dev",
+    "next:relay": "yarn workspace @multiple-choice/next relay",
+    "next:start": "yarn workspace @multiple-choice/next start",
     "prettier": "prettier",
     "relay": "yarn next:relay",
     "seed": "yarn workspace @multiple-choice/server seed",
     "server:build": "yarn workspace @multiple-choice/server build",
-    "server:graphql": "yarn workspace @multiple-choice/server graphql",
     "server:dev": "yarn workspace @multiple-choice/server dev",
+    "server:graphql": "yarn workspace @multiple-choice/server graphql",
     "server:test": "yarn workspace @multiple-choice/server test",
     "startup": "./scripts/startup.sh",
     "test": "jest",
     "typecheck": "tsc --pretty",
     "update": "yarn update-schema && yarn relay",
-    "update-schema": "yarn workspace @multiple-choice/server update-schema",
-    "next:dev": "yarn workspace @multiple-choice/next dev",
-    "next:start": "yarn workspace @multiple-choice/next start",
-    "next:build": "yarn workspace @multiple-choice/next build",
-    "next:relay": "yarn workspace @multiple-choice/next relay"
+    "update-schema": "yarn workspace @multiple-choice/server update-schema"
   },
   "lint-staged": {
     "*.yml": [
@@ -56,6 +56,9 @@
       "yarn sort-package-json",
       "git add"
     ]
+  },
+  "resolutions": {
+    "graphql": "15.0.0"
   },
   "dependencies": {},
   "devDependencies": {
@@ -83,9 +86,6 @@
     "lint-staged": "^10.2.2",
     "prettier": "^2.0.5",
     "sort-package-json": "1.42.2",
-    "typescript": "^3.6.3"
-  },
-  "resolutions": {
-    "graphql": "15.0.0"
+    "typescript": "^4.6.2"
   }
 }
