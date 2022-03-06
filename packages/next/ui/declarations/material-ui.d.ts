@@ -1,17 +1,9 @@
 /* eslint-disable @typescript-eslint/interface-name-prefix */
-import '@material-ui/core/styles/createMuiTheme';
+import '@material-ui/core/styles/createTheme';
 
-declare module '@material-ui/core/styles/createMuiTheme' {
+declare module '@material-ui/core/styles/createTheme' {
   interface ThemeVariables {
     contentPadding: number;
     headerHeight: number;
-  }
-
-  interface Theme {
-    variables?: ThemeVariables;
-  }
-
-  interface ThemeOptions {
-    variables?: ThemeVariables;
   }
 }
