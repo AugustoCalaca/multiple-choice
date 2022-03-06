@@ -9,7 +9,7 @@ import Grid from '@material-ui/core/Grid';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import Slide from '@material-ui/core/Slide';
 import { TransitionProps } from '@material-ui/core/transitions';
-import { useMutation } from '@multiple-choice/relay';
+import { useMutation } from 'react-relay';
 
 import * as yup from 'yup';
 import { useFormik } from 'formik';

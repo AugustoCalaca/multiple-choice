@@ -10,8 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
-
-import { useMutation } from '@multiple-choice/relay';
+import { useMutation } from 'react-relay';
 
 import { IDropDownOption, Actions, Toast, Alert } from '../ui';
 
