@@ -8,7 +8,7 @@ class MongoDbEnvironment extends NodeEnvironment {
 
     this.mongod = new MongoMemoryServer({
       binary: {
-        version: 'latest',
+        version: '4.2.3',
       },
       autoStart: false,
     });
@@ -18,11 +18,10 @@ class MongoDbEnvironment extends NodeEnvironment {
     await super.setup();
     await this.mongod.start();
 
-    const connectionString = await this.mongod.getConnectionString();
-    console.log('setup mongo connection: ', connectionString);
+    const uri = this.mongod.getUri();
+    console.log('setup mongo connection: ', uri);
 
-    this.global.__MONGO_URI__ = connectionString;
-    this.global.__MONGO_DB_NAME__ = await this.mongod.getDbName();
+    this.global.__MONGO_URI__ = uri;
     this.global.__COUNTERS__ = {
       multipleChoice: 0,
     };

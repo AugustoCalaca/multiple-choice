@@ -16,10 +16,8 @@ const mongooseOptions = {
 export * from './createResource/createRows';
 
 export async function connectMongoose() {
-  jest.setTimeout(10000);
   return mongoose.connect(global.__MONGO_URI__, {
     ...mongooseOptions,
-    dbName: global.__MONGO_DB_NAME__,
   });
 }
 
