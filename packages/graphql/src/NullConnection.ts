@@ -1,5 +1,5 @@
-export interface NullConnectionType {
-  edges: [];
+export type NullConnectionType = {
+  edges: Array<any>;
   count: number;
   pageInfo: {
     hasNextPage: boolean;
@@ -9,7 +9,7 @@ export interface NullConnectionType {
   };
   startCursorOffset: number;
   endCursorOffset: number;
-}
+};
 
 export const NullConnection: NullConnectionType = {
   edges: [],

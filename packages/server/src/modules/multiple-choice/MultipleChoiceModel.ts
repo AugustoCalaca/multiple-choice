@@ -1,6 +1,6 @@
 import mongoose, { Document } from 'mongoose';
 
-const notEmptyArray = (statements: []) => (Array.isArray(statements) && statements.length > 0 ? true : false);
+const notEmptyArray = (statements: Array<string>) => Array.isArray(statements) && statements.length > 0;
 
 const MultipleChoiceSchema = new mongoose.Schema(
   {
