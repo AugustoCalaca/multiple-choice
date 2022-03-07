@@ -11,7 +11,7 @@ export const MultipleChoiceDelete = graphql`
   }
 `;
 
-export const deleteUpdater: SelectorStoreUpdater = (store, data) => {
+export const deleteUpdater: SelectorStoreUpdater<{ id: string }> = (store, data) => {
   connectionDeleteEdgeUpdater({
     store,
     parentId: ROOT_ID,
