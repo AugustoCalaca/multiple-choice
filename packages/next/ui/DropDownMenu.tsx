@@ -6,7 +6,7 @@ import Menu, { MenuProps } from '@material-ui/core/Menu';
 import DropDownMenuContext from './DropDownMenuContext';
 
 const DropDownMenu = (props: Partial<MenuProps>) => {
-  const [targetElem, setTargetElem] = useState<HTMLElement>();
+  const [targetElem, setTargetElem] = useState<HTMLElement | null>();
 
   const handleOpen = useCallback((event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault();
