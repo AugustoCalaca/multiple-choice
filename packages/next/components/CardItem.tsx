@@ -89,7 +89,12 @@ const CardItem = (props: Props) => {
             props.data.statements.map((statement, index) => {
               const characterA = 65;
               return (
-                <Typography key={props.data.id} variant="body2" color="textSecondary" component="p">
+                <Typography
+                  key={`${props.data.id}${statement}${index}`}
+                  variant="body2"
+                  color="textSecondary"
+                  component="p"
+                >
                   {String.fromCharCode(characterA + index)}) {statement}
                 </Typography>
               );
