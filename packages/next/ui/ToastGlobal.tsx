@@ -44,7 +44,7 @@ export async function showGlobalToast(message: string, error: any, timeout?: num
 
   //prevent an alert to overhide another
   return (lastPromise = lastPromise.then(async () => {
-    await new Promise((resolve) => setTimeout(() => resolve(), 300));
+    await new Promise((resolve) => setTimeout(() => resolve(''), 300));
     return globalToast(message, error, timeout);
   }));
 }

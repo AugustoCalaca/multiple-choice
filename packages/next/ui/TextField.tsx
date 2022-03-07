@@ -21,13 +21,13 @@ const TextField = ({ formik, value, name, loading, onChange, InputProps, ...prop
 
   const handleChange = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
-      if (!formik) {
+      if (!formik && !!onChange) {
         onChange(e);
         return;
       }
 
-      formik.setFieldTouched(name, true, false);
-      formik.setFieldValue(name, e.currentTarget.value, true);
+      formik?.setFieldTouched(name, true, false);
+      formik?.setFieldValue(name, e.currentTarget.value, true);
     },
     [formik, name, onChange],
   );

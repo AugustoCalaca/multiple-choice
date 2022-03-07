@@ -10,11 +10,7 @@ export const PLATFORM = {
 
 // Define a function that fetches the results of a request (query/mutation/etc)
 // and returns its results as a Promise:
-const fetchQuery = async (
-  request: RequestParameters,
-  variables: Variables,
-  uploadables: UploadableMap | null | undefined,
-) => {
+const fetchQuery = async (request: RequestParameters, variables: Variables, uploadables?: UploadableMap | null) => {
   try {
     const body = getRequestBody(request, variables, uploadables);
     const authorization = typeof window !== 'undefined' ? localStorage.getItem('TOKEN_KEY') : null;
@@ -47,7 +43,7 @@ const fetchQuery = async (
     }
 
     return data;
-  } catch (err) {
+  } catch (err: any) {
     // eslint-disable-next-line no-console
     console.log('err:', err);
 

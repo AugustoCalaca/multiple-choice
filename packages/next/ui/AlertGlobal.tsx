@@ -14,7 +14,7 @@ const AlertGlobalProvider = () => {
     const result = new Promise<boolean>((resolve) => {
       setPromiseResolve(() => resolve);
       setOpened(true);
-      setParams({ confirmation: false, title: null, ...params });
+      setParams({ confirmation: false, title: '', ...params });
     });
 
     result.then(() => setOpened(false));
@@ -45,12 +45,11 @@ const AlertGlobalProvider = () => {
 };
 
 export const showGlobalAlert = async (params: IAlertShowParams): Promise<boolean> => {
-  //eslint-disable-next-line
   if (!globalAlert) throw new Error('Please, initialize an Alert.Global before');
 
   //prevent an alert to overhide another
   return (lastPromise = lastPromise.then(async () => {
-    await new Promise((resolve) => setTimeout(() => resolve(), 300));
+    await new Promise((resolve) => setTimeout(() => resolve(''), 300));
     return globalAlert(params);
   }));
 };

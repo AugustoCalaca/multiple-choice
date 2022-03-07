@@ -46,7 +46,7 @@ const Toast = (props: IProps) => {
   }, [props.error, props.message]);
 
   const handleClose = useCallback(
-    (event: any, reason?: string) => {
+    (_event: any, reason?: string) => {
       if (reason === 'clickaway') return;
       props.onClose();
     },

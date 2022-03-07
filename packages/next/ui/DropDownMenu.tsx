@@ -8,13 +8,13 @@ import DropDownMenuContext from './DropDownMenuContext';
 const DropDownMenu = (props: Partial<MenuProps>) => {
   const [targetElem, setTargetElem] = useState<HTMLElement | null>();
 
-  const handleOpen = useCallback((event: React.MouseEvent<HTMLElement>) => {
+  const handleOpen = useCallback((event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     event.stopPropagation();
     setTargetElem(event.currentTarget);
   }, []);
 
-  const handleClose = useCallback((event?: React.MouseEvent<HTMLElement>) => {
+  const handleClose = useCallback((event?: React.MouseEvent<HTMLButtonElement> | any) => {
     event && event.stopPropagation();
     setTargetElem(null);
   }, []);

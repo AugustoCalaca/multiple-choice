@@ -1,10 +1,8 @@
 import React from 'react';
 
-/**
- * A reusable component for handling errors in a React (sub)tree.
- */
+type ErrorBoundaryState = { error: { message: string; source: string } | null };
 class ErrorBoundary extends React.Component {
-  state = {
+  state: ErrorBoundaryState = {
     error: null,
   };
 

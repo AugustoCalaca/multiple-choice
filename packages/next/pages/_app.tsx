@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect } from 'react';
+import React, { Suspense } from 'react';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 import styled, { ThemeProvider } from 'styled-components';

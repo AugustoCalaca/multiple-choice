@@ -24,12 +24,13 @@ import { MultipleChoiceEdit } from './MultipleChoiceEdit';
 
 import { MultipleChoiceEditMutation } from './__generated__/MultipleChoiceEditMutation.graphql';
 import { MultipleChoiceAddMutation } from './__generated__/MultipleChoiceAddMutation.graphql';
+import { MultipleChoiceListItem_multipleChoice$data } from './__generated__/MultipleChoiceListItem_multipleChoice.graphql';
 
 interface IProps {
   opened: boolean;
-  multipleChoice?: MultipleChoiceType | null;
   onComplete: () => void;
   onCancel: () => void;
+  multipleChoice?: MultipleChoiceListItem_multipleChoice$data;
 }
 
 const validationSchema = yup.object().shape({
@@ -48,17 +49,19 @@ const FormDialog = (props: IProps) => {
   const [multipleChoiceAdd, isPendingAdd] = useMutation<MultipleChoiceAddMutation>(MultipleChoiceAdd);
   const [multipleChoiceEdit, isPendingEdit] = useMutation<MultipleChoiceEditMutation>(MultipleChoiceEdit);
 
-  const formik = useFormik<MultipleChoiceType>({
+  const formik = useFormik<Partial<MultipleChoiceType>>({
     initialValues: {
       question: '',
       statements: ['', '', ''],
       correctAnswer: '',
     },
     validationSchema,
+    // @ts-ignore
     onSubmit(multipleChoice) {
       const castValues = validationSchema.cast(multipleChoice); // apply trim
 
       if (props.multipleChoice) {
+        // @ts-ignore
         if (Object.entries(castValues).sort().toString() === Object.entries(props.multipleChoice).sort().toString()) {
           return Toast.type.show('Same data. Make a change in at least one field.');
         }
@@ -73,6 +76,7 @@ const FormDialog = (props: IProps) => {
           },
         };
 
+        // @ts-ignore
         return multipleChoiceEdit(configEdit);
       }
 
@@ -87,11 +91,13 @@ const FormDialog = (props: IProps) => {
         },
       };
 
+      // @ts-ignore
       return multipleChoiceAdd(configAdd);
     },
   });
 
   const handleEnter = useCallback(() => {
+    // @ts-ignore
     formik.setValues(props.multipleChoice ?? formik.initialValues, false);
   }, [formik, props.multipleChoice]);
 
@@ -112,7 +118,7 @@ const FormDialog = (props: IProps) => {
       {(formik.isSubmitting || isPendingAdd || isPendingEdit) && <LinearProgress color="primary" />}
 
       <form onSubmit={formik.handleSubmit}>
-        <DialogTitle>{formik.values!._id ? 'Edit' : 'New'} Multiple Choice</DialogTitle>
+        <DialogTitle>{formik.values.id ? 'Edit' : 'New'} Multiple Choice</DialogTitle>
         <DialogContentStyled>
           <Grid container direction="column" justifyContent="flex-start" spacing={2}>
             <Grid item>
