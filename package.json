@@ -34,6 +34,7 @@
     "server:build": "yarn workspace @multiple-choice/server build",
     "server:dev": "yarn workspace @multiple-choice/server dev",
     "server:graphql": "yarn workspace @multiple-choice/server graphql",
+    "server:start": "yarn workspace @multiple-choice/server start",
     "server:test": "yarn workspace @multiple-choice/server test",
     "startup": "./scripts/startup.sh",
     "test": "jest",
