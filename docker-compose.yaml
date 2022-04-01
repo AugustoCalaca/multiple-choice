@@ -1,0 +1,33 @@
+version: '3.9'
+
+volumes:
+  mongo_volume:
+
+networks:
+  api_network:
+    driver: bridge
+
+services:
+  api: 
+    image: 123546548645/multiple-choice:v1
+    build:
+      dockerfile: ./Dockerfile
+      context: ./
+    ports: 
+      - 5050:5050
+    networks:
+      - api_network
+    depends_on:
+      - mongodb
+
+  mongodb:
+    image: mongo:4.4.3
+    ports:
+      - 27017:27017
+    volumes:
+      - mongo_volume:/data/db
+    networks:
+      - api_network
+    environment:
+      MONGO_INITDB_ROOT_USERNAME:
+      MONGO_INITDB_ROOT_PASSWORD:
