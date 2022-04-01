@@ -10,6 +10,7 @@
     "build": "yarn swc",
     "dev": "webpack --progress --config webpack.config.graphql.js",
     "seed": "babel-node --extensions \".js,.jsx,.ts,.tsx\" scripts/seed",
+    "start": "node dist",
     "swc": "swc ./src -d dist",
     "test": "jest",
     "test:watch": "jest --watch",
@@ -19,7 +20,6 @@
     "@entria/graphql-mongo-helpers": "^0.0.1",
     "@entria/graphql-mongoose-loader": "4.3.0",
     "@koa/router": "^8.0.2",
-    "@multiple-choice/babel-server": "*",
     "@multiple-choice/graphql": "*",
     "@typescript-eslint/eslint-plugin": "^2.5.0",
     "@typescript-eslint/parser": "^2.5.0",
@@ -53,6 +53,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.6.2",
+    "@multiple-choice/babel-server": "*",
     "@swc/cli": "^0.1.55",
     "@swc/core": "^1.2.146",
     "@swc/jest": "^0.2.18",
