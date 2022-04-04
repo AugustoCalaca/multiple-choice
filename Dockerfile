@@ -11,7 +11,6 @@ RUN yarn --frozen-lockfile --ignore-scripts --no-interactive
 
 COPY packages/server ./packages/server
 COPY packages/graphql ./packages/graphql
-RUN ls -a packages/server
 
 RUN yarn workspace @multiple-choice/graphql build:js
 RUN yarn workspace @multiple-choice/server build

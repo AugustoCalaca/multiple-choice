@@ -4,7 +4,7 @@ import { createServer } from 'http';
 import { execute, subscribe } from 'graphql';
 import { SubscriptionServer } from 'subscriptions-transport-ws';
 
-import { GRAPHQL_PORT } from './common/config';
+import { PORT } from './common/config';
 import { connectDatabase } from './common/database';
 
 import app from './app';
@@ -24,9 +24,9 @@ const runServer = async () => {
 
   const server = createServer(app.callback());
 
-  server.listen(GRAPHQL_PORT, () => {
+  server.listen(PORT, () => {
     // eslint-disable-next-line no-console
-    console.info(`[\\o/] - Server started on port: ${GRAPHQL_PORT}`);
+    console.info(`[\\o/] - Server started on port: ${PORT}`);
   });
 
   SubscriptionServer.create(

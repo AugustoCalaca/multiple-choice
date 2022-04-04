@@ -26,7 +26,7 @@ if (process.env.NODE_ENV && process.env.NODE_ENV !== 'test') {
 export const MONGO_URI = envVar.get('MONGO_URI').required().asString();
 
 // Ports
-export const GRAPHQL_PORT = envVar.get('GRAPHQL_PORT').default('5050').required().asPortNumber();
+export const PORT = envVar.get('PORT').default('5050').required().asPortNumber();
 
 // Debug
 export const DEBUG_GRAPHQL = envVar.get('DEBUG_GRAPHQL').default('false').asBoolStrict();
